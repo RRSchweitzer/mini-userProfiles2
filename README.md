@@ -29,7 +29,7 @@ Our service has all this data inside of it:
   ]
 ```
 
-In the real world, we won't be storing data in our files at all. This is what databases are for. Instead, our Angular app makes requests to web servers which go and fetch the data. We will do that by using the built in Angular service of $http. $http is a service that makes AJAX requests to APIs. With Ajax, Web applications can send data to and retrieve from a server asynchronously (in the background) without interfering with the display and behavior of the existing page. AJAX is super important to web development. Let's remove our data and replace it with an  request. 
+In the real world, we won't be storing data in our files at all. This is what databases are for. Instead, our Angular app makes requests to web servers which go and fetch the data. We will do that by using the built in Angular service of $http. $http is a service that makes AJAX requests to APIs. With Ajax, Web applications can send data to and retrieve from a server asynchronously (in the background) without interfering with the display and behavior of the existing page. AJAX is super important to web development. Let's remove our data and replace it with a request. 
 
 - Remove the data variable from the code so that our service looks like this:
 
@@ -84,7 +84,7 @@ app.controller('MainController', function($scope, mainService) {
 ```
 We are simply setting our users equal to the result of our service's getUsers function. This won't work anymore. If we tried to leave the controller the same, we would end up getting the response from our request without data. The reason why is because when hitting a real API, it takes some time to retrieve the data. While the data is still trying to come back, Angular has already defined $scope.users, and it's defined it without having any data!
 
-What we need to do is implement a promise! A promise will keep Angular from jumping to conclusions. Instead of defning $scope.users ASAP, Angular will wait until the data comes through to define it. 
+What we need to do is implement a promise! A promise will keep Angular from jumping to conclusions. Instead of defining $scope.users ASAP, Angular will wait until the data comes through to define it. 
 
 - Replace the old getUsers method with a new one which has a promise!
 ``` javascript
